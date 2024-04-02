@@ -11,38 +11,38 @@ let XXXX = tap.none & hold.none in
 let shared_layers = {
   NUM0 = [
             XXXX,    XXXX,    XXXX,    XXXX,        ks.PLUS, kc.N7,   kc.N8,   kc.N9,
-            md.lalt, md.lgui, md.lsft, XXXX,        kc.MINS, kc.N4,   kc.N5,   kc.N6,
-   md.lctl, XXXX,    XXXX,    XXXX,                          kc.N1,   kc.N2,   kc.N3,   kc.SLSH,
+   md.lctl, md.lalt, md.lgui, md.lsft, XXXX,        kc.MINS, kc.N4,   kc.N5,   kc.N6,   kc.SLSH,
+            XXXX,    XXXX,    XXXX,                          kc.N1,   kc.N2,   kc.N3,   
                               XXXX,    XXXX,        kc.E,    kc.N0,
   ],
   NAV0 = [
             XXXX,    XXXX,    XXXX,    me.VOLD,     me.VOLU, kc.BSPC, kc.DEL,  kc.INS,
-            md.lalt, md.lgui, md.lsft, me.MUTE,     kc.LEFT, kc.DOWN, kc.UP,   kc.RGHT,
-   md.lctl, XXXX,    XXXX,    XXXX,                          kc.HOME, XXXX,    kc.END,  kc.TAB,
+   md.lctl, md.lalt, md.lgui, md.lsft, me.MUTE,     kc.LEFT, kc.DOWN, kc.UP,   kc.RGHT, kc.TAB,
+            XXXX,    XXXX,    XXXX,                          kc.HOME, XXXX,    kc.END,  
                               XXXX,    XXXX,        XXXX,    XXXX,
   ],
   NUM1 = [
             kc.N9,   kc.N8,   kc.N7,   ks.ASTR,     ks.PLUS, kc.N7,   kc.N8,   kc.N9,
-            kc.N6,   kc.N5,   kc.N4,   kc.SLSH,     kc.MINS, kc.N4,   kc.N5,   kc.N6,
-   kc.N0,   kc.N3,   kc.N2,   kc.N1,                         kc.N1,   kc.N2,   kc.N3,   kc.DOT,
+   kc.N0,   kc.N6,   kc.N5,   kc.N4,   kc.SLSH,     kc.MINS, kc.N4,   kc.N5,   kc.N6,   kc.DOT,
+            kc.N3,   kc.N2,   kc.N1,                         kc.N1,   kc.N2,   kc.N3,   
                               XXXX,    XXXX,        kc.E,    kc.N0,
   ],
   NAV1 = [
             kc.INS,  kc.UP,   kc.BSPC, me.VOLD,     me.VOLU, kc.BSPC, kc.DEL,  kc.INS,
-            kc.LEFT, kc.DOWN, kc.RGHT, me.MUTE,     kc.LEFT, kc.DOWN, kc.UP,   kc.RGHT,
-   md.lctl, kc.HOME, kc.PGDN, kc.END,                        kc.HOME, kc.PGUP, kc.END,  kc.TAB,
+   md.lctl, kc.LEFT, kc.DOWN, kc.RGHT, me.MUTE,     kc.LEFT, kc.DOWN, kc.UP,   kc.RGHT, kc.TAB,
+            kc.HOME, kc.PGDN, kc.END,                        kc.HOME, kc.PGUP, kc.END,  
                               XXXX,    XXXX,        XXXX,    XXXX,
   ],
   SYM = [
             kc.GRV,  ks.DQUO, kc.DOT,  kc.LBRC,     kc.RBRC, kc.BSLS, ks.PIPE, kc.SLSH,
-            ks.AT,   ks.HASH, ks.DLR,  ks.LPRN,     ks.RPRN, ks.AMPR, ks.ASTR, ks.PERC,
-   ks.EXLM, ks.TILD, kc.QUOT, ks.UNDS,                       kc.MINS, ks.PLUS, kc.EQL,  kc.TAB,
+   ks.EXLM, ks.AT,   ks.HASH, ks.DLR,  ks.LPRN,     ks.RPRN, ks.AMPR, ks.ASTR, ks.PERC, kc.TAB,
+            ks.TILD, kc.QUOT, ks.UNDS,                       kc.MINS, ks.PLUS, kc.EQL,  
                               ks.LCBR, ks.RCBR,     XXXX,    XXXX,
   ],
   FUN = [
             XXXX,    XXXX,    XXXX,    XXXX,        kc.F12,  kc.F7,   kc.F8,   kc.F9,
-            XXXX,    XXXX,    XXXX,    XXXX,        kc.F11,  kc.F4,   kc.F5,   kc.F6,
-   XXXX,    XXXX,    XXXX,    XXXX,                          kc.F1,   kc.F2,   kc.F3,   kc.F10,
+   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        kc.F11,  kc.F4,   kc.F5,   kc.F6,   kc.F10,
+            XXXX,    XXXX,    XXXX,                          kc.F1,   kc.F2,   kc.F3,   
                               XXXX,    XXXX,        XXXX,    XXXX,
   ],
 } in
@@ -93,7 +93,7 @@ let both_side_combos = [
   },
 
   aptmak = {
-    base_layout = "WFPBJLUYSTHKXNAIRCGDM,.O",
+    base_layout = "WFPBJLUYRSTHKXNAIOCGDM,.",
     thumbs = [kc.QUOT, kc.SPC, kc.E, kc.ENT],
     combos = [
       # Left

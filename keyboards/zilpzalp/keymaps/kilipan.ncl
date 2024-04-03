@@ -2,34 +2,34 @@ let { tap, hold, td, combo, macro, ..} = import "fak/keycode.ncl" in
 let util = import "fak/util_functions.ncl" in
 
 let virtual_keys' = [
-    # alpha
-    combo.make 25 [0, 1], # V
-    combo.make 25 [1, 2], # Q
-    combo.make 25 [18, 19], # Z
-    combo.make 25 [0, 2], # SCH
-    # sym
-    combo.make 25 [22, 23], # SLSH
-    combo.make 25 [21, 22], # MINS
-    combo.make 25 [22, 27], # SEMI
-    combo.make 25 [23, 27], # COLON
-    # parentheticals
-    combo.make 25 [0, 9],  # {
-    combo.make 25 [1, 10], # [
-    combo.make 25 [2, 11], # (
-    combo.make 25 [3, 12], # <
-    combo.make 25 [4, 13], # >
-    combo.make 25 [5, 14], # )
-    combo.make 25 [6, 15], # ]
-    combo.make 25 [7, 16], # }
-    # nav
-    combo.make 25 [19, 20], # ESC
-    combo.make 25 [21, 23], # ENT
-    combo.make 25 [5, 6], # BSPC
-    combo.make 25 [6, 7], # DEL
-    combo.make 25 [5, 7], # C-BSPC
-    # caps
-    combo.make 25 [11, 14], # caps word
-    combo.make 25 [0, 7], # caps lock
+  # alpha
+  combo.make 25 [0, 1], # V
+  combo.make 25 [1, 2], # Q
+  combo.make 25 [18, 19], # Z
+  combo.make 25 [0, 2], # SCH
+  # sym
+  combo.make 25 [22, 23], # SLSH
+  combo.make 25 [21, 22], # MINS
+  combo.make 25 [22, 27], # SEMI
+  combo.make 25 [23, 27], # COLON
+  # parentheticals
+  combo.make 25 [0, 9],  # {
+  combo.make 25 [1, 10], # [
+  combo.make 25 [2, 11], # (
+  combo.make 25 [3, 12], # <
+  combo.make 25 [4, 13], # >
+  combo.make 25 [5, 14], # )
+  combo.make 25 [6, 15], # ]
+  combo.make 25 [7, 16], # }
+  # nav
+  combo.make 25 [19, 20], # ESC
+  combo.make 25 [21, 23], # ENT
+  combo.make 25 [5, 6], # BSPC
+  combo.make 25 [6, 7], # DEL
+  combo.make 25 [5, 7], # C-BSPC
+  # caps
+  combo.make 25 [11, 14], # caps word
+  combo.make 25 [0, 7], # caps lock
 ] in
 
 let virtual_key_count = std.array.length virtual_keys' in
@@ -75,8 +75,8 @@ let make_hrm = fun key_idx =>
   let htb_hrm_base = fun eager => {
     timeout_ms = 150,
     quick_tap_ms = 100,
-    # quick_tap_interrupt_ms = 500,
-    # global_quick_tap_ms = 80,
+    quick_tap_interrupt_ms = 500,
+    global_quick_tap_ms = 80,
     eager_decision = eager,
     timeout_decision = 'hold,
   } in
@@ -88,7 +88,7 @@ let make_hrm = fun key_idx =>
              ki.tp, ki.tp, ki.tp, ki.tp,    ki.hr, ki.hr, ki.hr, ki.hr,
       ki.tr, ki.tr, ki.tr, ki.tr, ki.tr,    ki.hr, ki.hr, ki.hr, ki.hr, ki.hr,
              ki.tp, ki.tp, ki.tp,                  ki.hr, ki.hr, ki.hr,
-                           ki.hp, ki.hp,    ki.hp, ki.hp,
+                           ki.hr, ki.hr,    ki.hr, ki.hr,
     ] @ virtual_interrupts
   } in
 
@@ -97,7 +97,7 @@ let make_hrm = fun key_idx =>
              ki.hr, ki.hr, ki.hr, ki.hr,    ki.tp, ki.tp, ki.tp, ki.tp,       
       ki.hr, ki.hr, ki.hr, ki.hr, ki.hr,    ki.tr, ki.tr, ki.tr, ki.tr, ki.tr,
              ki.hr, ki.hr, ki.hr,                  ki.tp, ki.tp, ki.tp,
-                           ki.hp, ki.hp,    ki.hp, ki.hp,
+                           ki.hr, ki.hr,    ki.hr, ki.hr,
     ] @ virtual_interrupts
   } in
 
@@ -157,27 +157,6 @@ let cu = {
     macro.tap kc.H,
   ]
 } in
-
-
-# # left hand hrm
-# let hrmLP = kc.R & mdh.lctl & hold.reg.behavior hrm_behavior in
-# let hrmLR = kc.S & mdh.lalt & hold.reg.behavior hrm_behavior in
-# let hrmLM = kc.T & mdh.lgui & hold.reg.behavior hrm_behavior in
-# let hrmLI = kc.H & mdh.lsft & hold.reg.behavior hrm_behavior in
-# let hrmLS = kc.K & mdh.ralt & hold.reg.behavior hrm_behavior in
-
-# # right hand hrm
-# let hrmRS = kc.X & mdh.ralt & hold.reg.behavior hrm_behavior in
-# let hrmRI = kc.N & mdh.rsft & hold.reg.behavior hrm_behavior in
-# let hrmRM = kc.A & mdh.rgui & hold.reg.behavior hrm_behavior in
-# let hrmRR = kc.I & mdh.lalt & hold.reg.behavior hrm_behavior in
-# let hrmRP = kc.O & mdh.rctl & hold.reg.behavior hrm_behavior in
-
-# # layer taps
-# let ltLTT = kc.QUOT & lt 1 & hold.reg.behavior hrm_behavior in
-# let ltLTR = kc.SPC  & lt 2 & hold.reg.behavior hrm_behavior in
-# let ltRTR = kc.E    & lt 3 & hold.reg.behavior hrm_behavior in
-# let ltRTT = kc.TAB  & lt 4 & hold.reg.behavior hrm_behavior in
 
 let combos_base = [
   kc.V, kc.Q, kc.Z, cu.SCH,

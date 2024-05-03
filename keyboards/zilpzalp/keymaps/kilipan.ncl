@@ -74,9 +74,9 @@ let layouts = {
 let make_hrm = fun key_idx =>
   let htb_hrm_base = fun eager => {
     timeout_ms = 150,
-    quick_tap_ms = 100,
-    quick_tap_interrupt_ms = 500,
-    global_quick_tap_ms = 80,
+    # quick_tap_ms = 100,
+    # quick_tap_interrupt_ms = 500,
+    # global_quick_tap_ms = 80,
     eager_decision = eager,
     timeout_decision = 'hold,
   } in

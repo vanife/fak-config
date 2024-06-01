@@ -3,10 +3,14 @@ let util = import "fak/util_functions.ncl" in
 
 let virtual_keys' = [
   # alpha
-  combo.make 25 [0, 1], # V
-  combo.make 25 [1, 2], # Q
+  combo.make 25 [0, 1],   # V
+  combo.make 25 [1, 2],   # Q
   combo.make 25 [18, 19], # Z
-  combo.make 25 [0, 2], # SCH
+  combo.make 25 [0, 2],   # SCH
+  combo.make 25 [9, 25],  # SZ
+  combo.make 25 [15, 26], # AE
+  combo.make 25 [17, 26], # OE
+  combo.make 25 [6, 26],  # UE
   # sym
   combo.make 25 [22, 23], # SLSH
   combo.make 25 [21, 22], # MINS
@@ -45,7 +49,7 @@ let md = tap.reg.mod in
 # let ksh = hold.reg.ks in
 let mdh = hold.reg.mod in
 # sticky key
-let sk = tap.sticky.mod in
+let sk' = tap.sticky.mod in
 # layer control
 let lt = hold.reg.layer in
 # boot, reset, etc
@@ -67,8 +71,25 @@ let ki = {
   xx = { decision = 'none },
 } in
 
+let sticky_behavior = {
+  timeout_ms = 150,
+  timeout_decision = 'hold,
+  key_interrupts = std.array.replicate key_count ki.hr,
+} in
+let sk = {
+  lctl = sk'.lctl & mdh.lctl & hold.reg.behavior sticky_behavior,
+  rctl = sk'.rctl & mdh.rctl & hold.reg.behavior sticky_behavior,
+  lalt = sk'.lalt & mdh.lalt & hold.reg.behavior sticky_behavior,
+  ralt = sk'.ralt & mdh.ralt & hold.reg.behavior sticky_behavior,
+  lgui = sk'.lgui & mdh.lgui & hold.reg.behavior sticky_behavior,
+  rgui = sk'.rgui & mdh.rgui & hold.reg.behavior sticky_behavior,
+  lsft = sk'.lsft & mdh.lsft & hold.reg.behavior sticky_behavior,
+  rsft = sk'.rsft & mdh.rsft & hold.reg.behavior sticky_behavior,
+} in
+
 let layouts = {
   APTMAK = "WFPBJLUYRSTHKXNAIOCGDM,.",
+  APTMAK_DE = "WFPBJLUZRSTHKXNAIOCGDM,.",
 } in
 
 let make_hrm = fun key_idx =>
@@ -147,19 +168,23 @@ in
 
 let cu = {
   # copy custom stuff from example
-  COPY = md.lctl & kc.C,
-  PSTE = md.lctl & kc.V,
+  COPY = md.lctl & kc.INS, # md.lctl & kc.C,
+  PSTE = md.lsft & kc.INS, # md.lctl & kc.V,
   CUT  = md.lctl & kc.X,
   SCH  = macro.make [
     macro.tap kc.S,
     macro.release mdh.rsft,
     macro.tap kc.C,
     macro.tap kc.H,
-  ]
+  ],
+  SZ = macro.make [ macro.press mdh.ralt, macro.tap kc.S,    macro.release mdh.ralt, ],
+  AE = macro.make [ macro.press mdh.ralt, macro.tap ks.DQUO, macro.release mdh.ralt, macro.tap kc.A, ],
+  OE = macro.make [ macro.press mdh.ralt, macro.tap ks.DQUO, macro.release mdh.ralt, macro.tap kc.O, ],
+  UE = macro.make [ macro.press mdh.ralt, macro.tap ks.DQUO, macro.release mdh.ralt, macro.tap kc.U, ],
 } in
 
 let combos_base = [
-  kc.V, kc.Q, kc.Z, cu.SCH,
+  kc.V, kc.Q, kc.Z, cu.SCH, cu.SZ, cu.AE, cu.OE, cu.UE,
   kc.SLSH, kc.MINS, kc.SCLN, ks.COLN,
   ks.LCBR, kc.LBRC, ks.LPRN, ks.LABK, ks.RABK, ks.RPRN, kc.RBRC, ks.RCBR,
   kc.ESC, kc.ENT, kc.BSPC, kc.DEL, md.lctl & kc.BSPC,
@@ -180,24 +205,24 @@ let combos_base = [
     ] @ combos_base,
     # NUM
     [
-                  kc.N6,      kc.N5,      kc.N4,      ks.ASTR,      ks.PLUS, kc.N7,   kc.N8,   kc.N9,
-      kc.N0 & ht, kc.N3 & ht, kc.N2 & ht, kc.N1 & ht, kc.SLSH & ht, kc.MINS, kc.N4,   kc.N5,   kc.N6,   kc.DOT,
-                  kc.N9,      kc.N8,      kc.N7,                             kc.N1,   kc.N2,   kc.N3,
-                                          tt & ht,    tt & ht,      kc.E,    kc.N0,
+                    tx & hx,      tx & hx,      tx & hx,      tx & hx,      tx & hx, kc.N7,   kc.N8,   kc.N9,
+      kc.PPLS & ht, kc.PMNS & ht, kc.PAST & ht, kc.PSLS & ht, tx & ht,      tx & hx, kc.N4,   kc.N5,   kc.N6,   kc.DOT,
+                    kc.N9,        kc.N8,        kc.N7,                               kc.N1,   kc.N2,   kc.N3,
+                                                tt & ht,      tt & ht,      kc.E,    kc.N0,
     ] @ combos_base,
     # NAV
     [
-                  md.lalt,      kc.UP,        md.lsft,      media.VOLU,   cu.CUT,     cu.COPY,    cu.PSTE,  tt & ht,
-      md.lctl,    kc.LEFT & ht, kc.DOWN & ht, kc.RGHT & ht, media.VOLD,   media.MUTE, kc.LEFT,    kc.DOWN,  kc.UP,      kc.RGHT,
+                  tx & hx,      tx & hx,      tx & hx,      media.VOLU,   cu.CUT,     cu.COPY,    cu.PSTE,  tx & hx,
+      sk.lctl,    sk.lalt,      sk.lgui,      sk.lsft,      media.VOLD,   media.MUTE, kc.LEFT,    kc.DOWN,  kc.UP,      kc.RGHT,
                   kc.HOME,      kc.PGDN,      kc.END,                                 kc.HOME,    kc.PGUP,  kc.END,
                                               tt & ht,      tt & ht,      mouse.BTN1, mouse.BTN2,
     ] @ combos_base,
     # SYM
     [
-               kc.GRV,  ks.DQUO, kc.P,    tx & hx, tx & hx, kc.BSLS, ks.PIPE, tx & hx,
+               tx & hx, tx & hx, tx & hx, tx & hx, tx & hx, tx & hx, tx & hx, tx & hx,
       ks.EXLM, ks.AT,   ks.HASH, ks.DLR,  tx & hx, tx & hx, ks.AMPR, ks.ASTR, ks.PERC, ks.CIRC,
-               ks.TILD, kc.QUOT, ks.UNDS,                   kc.MINS, ks.PLUS, kc.EQL,
-                                 tt & ht, tt & ht, tt & ht, tt & ht,
+               kc.GRV,  ks.DQUO, ks.UNDS,                   kc.BSLS, ks.PIPE, kc.EQL,
+                                 ks.TILD, tt & ht, tt & ht, tt & ht,
     ] @ combos_base,
     # FUN
     [

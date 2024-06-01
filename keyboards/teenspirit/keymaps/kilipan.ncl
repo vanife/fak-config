@@ -54,6 +54,8 @@ let virtual_keys' = [
   combo.make 25 [12, 13], # Z
   combo.make 25 [1, 3],   # SCH
   combo.make 25 [8, 10],  # Q
+  combo.make 25 [2, 10],  # K 2.0
+  combo.make 25 [5, 11],  # J 2.0
   # sym
   combo.make 25 [6, 12],  # SLSH
   combo.make 25 [12, 17], # SEMI
@@ -80,7 +82,7 @@ let virtual_keys' = [
 let combos_base = [
   kc.W, kc.M, kc.B, kc.K, kc.V, kc.COMMA, kc.DOT,
         kc.F, kc.P, kc.J, kc.X, kc.Z,
-  cu.SCH, kc.Q,
+  cu.SCH, kc.Q, kc.K, kc.J,
   kc.SLSH, kc.SCLN, ks.COLN,
   ks.LCBR, kc.LBRC, ks.LPRN, ks.LABK, ks.RABK, ks.RPRN, kc.RBRC, ks.RCBR,
   kc.ESC, kc.ENT, kc.BSPC, kc.DEL, md.lctl & kc.BSPC,

@@ -1,4 +1,5 @@
 let { tap, hold, td, combo, macro, ..} = import "fak/keycode.ncl" in
+let de = import "lib/german.ncl" in
 let util = import "fak/util_functions.ncl" in
 
 let virtual_keys' = [
@@ -64,35 +65,35 @@ let hx = hold.none in
 let ht = hold.trans in
 
 
-let de_kc = {
-  SLSH = ks.AMPR,
-  MINS = kc.SLSH,
-  GRV  = ks.PLUS,
-  SCLN = ks.LABK,
-  LBRC = md.ralt & kc.N8,
-  RBRC = md.ralt & kc.N9,
-  BSLS = md.ralt & kc.MINUS,
-  EQL  = ks.RPRN,
-  QUOT = md.lsft & kc.NUHS,
-} in 
-let de_ks = {
-  AT   = md.ralt & kc.Q,
-  HASH = kc.NUHS,
-  AMPR = ks.CIRC,
-  ASTR = ks.RCBR,
-  TILD = md.ralt & kc.RBRC,
-  DQUO = ks.AT,
-  COLN = ks.RABK,
-  UNDS = ks.QUES,
-  CIRC = kc.GRV,
-  PIPE = md.ralt & kc.NUBS,
-  LCBR = md.ralt & kc.N7,
-  LPRN = ks.ASTR,
-  LABK = kc.NUBS,
-  RABK = md.lsft & kc.NUBS,
-  RPRN = ks.LPRN,
-  RCBR = md.ralt & kc.N0,
-} in
+# let de_kc = {
+#   SLSH = ks.AMPR,
+#   MINS = kc.SLSH,
+#   GRV  = ks.PLUS,
+#   SCLN = ks.LABK,
+#   LBRC = md.ralt & kc.N8,
+#   RBRC = md.ralt & kc.N9,
+#   BSLS = md.ralt & kc.MINUS,
+#   EQL  = ks.RPRN,
+#   QUOT = md.lsft & kc.NUHS,
+# } in 
+# let de_ks = {
+#   AT   = md.ralt & kc.Q,
+#   HASH = kc.NUHS,
+#   AMPR = ks.CIRC,
+#   ASTR = ks.RCBR,
+#   TILD = md.ralt & kc.RBRC,
+#   DQUO = ks.AT,
+#   COLN = ks.RABK,
+#   UNDS = ks.QUES,
+#   CIRC = kc.GRV,
+#   PIPE = md.ralt & kc.NUBS,
+#   LCBR = md.ralt & kc.N7,
+#   LPRN = ks.ASTR,
+#   LABK = kc.NUBS,
+#   RABK = md.lsft & kc.NUBS,
+#   RPRN = ks.LPRN,
+#   RCBR = md.ralt & kc.N0,
+# } in
 
 let ki = {
   hp = { decision = 'hold, trigger_on = 'press },
@@ -189,7 +190,7 @@ let thumb = fun thumb_idx =>
     key_interrupts = std.array.replicate key_count ki.hr,
   } in
   [
-    de_kc.QUOT & lt 1 & hold.reg.behavior thumb_behavior,
+    de.QUOT & lt 1 & hold.reg.behavior thumb_behavior,
     kc.SPC  & lt 2 & hold.reg.behavior thumb_behavior,
     kc.E    & lt 3 & hold.reg.behavior thumb_behavior,
     kc.TAB  & lt 4 & hold.reg.behavior thumb_behavior,    
@@ -220,8 +221,8 @@ let cu = {
 
 let combos_base = [
   kc.V, kc.Q, kc.Y, cu.SCH, cu.SZ, cu.AE, cu.OE, cu.UE,
-  de_kc.SLSH, de_kc.MINS, de_kc.SCLN, de_ks.COLN,
-  de_ks.LCBR, de_kc.LBRC, de_ks.LPRN, de_ks.LABK, de_ks.RABK, de_ks.RPRN, de_kc.RBRC, de_ks.RCBR,
+  de.SLSH, de.MINS, de.SCLN, de.COLN,
+  de.LCBR, de.LBRC, de.LPRN, de.LABK, de.RABK, de.RPRN, de.RBRC, de.RCBR,
   kc.ESC, kc.ENT, kc.BSPC, kc.DEL, md.lctl & kc.BSPC,
   fak.CWTG, kc.CAPS_LOCK,
 ] in
@@ -255,9 +256,9 @@ let combos_base = [
     # SYM
     [
                tx & hx, tx & hx, tx & hx, tx & hx, tx & hx, tx & hx, tx & hx, tx & hx,
-      ks.EXLM, de_ks.AT,   de_ks.HASH, ks.DLR,  tx & hx, tx & hx, de_ks.AMPR, de_ks.ASTR, ks.PERC, de_ks.CIRC,
-               de_kc.GRV,  de_ks.DQUO, de_ks.UNDS,                   de_kc.BSLS, de_ks.PIPE, de_kc.EQL,
-                                 de_ks.TILD, tt & ht, tt & ht, tt & ht,
+      ks.EXLM, de.AT,   de.HASH, ks.DLR,  tx & hx, tx & hx, de.AMPR, de.ASTR, ks.PERC, de.CIRC,
+               de.GRV,  de.DQUO, de.UNDS,                   de.BSLS, de.PIPE, de.EQL,
+                                 de.TILD, tt & ht, tt & ht, tt & ht,
     ] @ combos_base,
     # FUN
     [

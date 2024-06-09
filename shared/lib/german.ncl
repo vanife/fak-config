@@ -1,6 +1,6 @@
 let { tap, ..} = import "fak/keycode.ncl" in
 
-let de_kc = {
+{
   SLSH = tap.reg.ks.AMPR,
   MINS = tap.reg.kc.SLSH,
   GRV  = tap.reg.ks.PLUS,
@@ -14,8 +14,6 @@ let de_kc = {
   AE   = tap.reg.kc.QUOT,
   OE   = tap.reg.kc.SCLN,
   UE   = tap.reg.kc.LBRC,
-} in 
-let de_ks = {
   AT   = tap.reg.md.ralt & tap.reg.kc.Q,
   HASH = tap.reg.kc.NUHS,
   AMPR = tap.reg.ks.CIRC,
@@ -32,9 +30,4 @@ let de_ks = {
   RABK = tap.reg.md.lsft & tap.reg.kc.NUBS,
   RPRN = tap.reg.ks.LPRN,
   RCBR = tap.reg.md.ralt & tap.reg.kc.N0,
-} in
-
-{
-  kc = de_kc,
-  ks = de_ks,
 }

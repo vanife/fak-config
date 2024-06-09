@@ -35,7 +35,11 @@ let cu = {
     macro.release mdh.rsft,
     macro.tap kc.C,
     macro.tap kc.H,
-  ]
+  ],
+  SZ = macro.make [ macro.press mdh.ralt, macro.tap kc.S,    macro.release mdh.ralt, ],
+  AE = macro.make [ macro.press mdh.ralt, macro.tap ks.DQUO, macro.release mdh.ralt, macro.tap kc.A, ],
+  OE = macro.make [ macro.press mdh.ralt, macro.tap ks.DQUO, macro.release mdh.ralt, macro.tap kc.O, ],
+  UE = macro.make [ macro.press mdh.ralt, macro.tap ks.DQUO, macro.release mdh.ralt, macro.tap kc.U, ],
 } in
 
 let virtual_keys' = [
@@ -43,20 +47,24 @@ let virtual_keys' = [
   combo.make 25 [0, 1],   # W
   combo.make 25 [1, 2],   # M
   combo.make 25 [2, 3],   # B
-  combo.make 25 [3, 4],   # K
   combo.make 25 [4, 5],   # V
   combo.make 25 [5, 6],   # comma
   combo.make 25 [6, 7],   # dot
   combo.make 25 [8, 9],   # F
   combo.make 25 [9, 10],  # P
-  combo.make 25 [10, 11], # J
   combo.make 25 [11, 12], # X
   combo.make 25 [12, 13], # Z
+  # alpha non-adjacent
   combo.make 25 [1, 3],   # SCH
   combo.make 25 [8, 10],  # Q
   combo.make 25 [2, 10],  # K 2.0
   combo.make 25 [5, 11],  # J 2.0
+  combo.make 25 [1, 15],  # ß
+  combo.make 25 [5, 16],  # Ä
+  combo.make 25 [7, 16],  # Ö
+  combo.make 25 [12, 16], # Ü
   # sym
+  combo.make 25 [1, 9],   # MINUS
   combo.make 25 [6, 12],  # SLSH
   combo.make 25 [12, 17], # SEMI
   combo.make 25 [13, 17], # COLON
@@ -76,14 +84,14 @@ let virtual_keys' = [
   combo.make 25 [5, 7], # DEL
   combo.make 25 [4, 7], # C-BSPC
   # caps
-  combo.make 25 [2, 5], # caps word
+  combo.make 25 [3, 4], # caps word
   combo.make 25 [1, 6], # caps lock
 ] in
 let combos_base = [
-  kc.W, kc.M, kc.B, kc.K, kc.V, kc.COMMA, kc.DOT,
-        kc.F, kc.P, kc.J, kc.X, kc.Z,
-  cu.SCH, kc.Q, kc.K, kc.J,
-  kc.SLSH, kc.SCLN, ks.COLN,
+  kc.W, kc.M, kc.B, kc.V, kc.COMMA, kc.DOT,
+        kc.F, kc.P, kc.X, kc.Z,
+  cu.SCH, kc.Q, kc.K, kc.J, cu.SZ, cu.AE, cu.OE, cu.UE,
+  kc.MINS, kc.SLSH, kc.SCLN, ks.COLN,
   ks.LCBR, kc.LBRC, ks.LPRN, ks.LABK, ks.RABK, ks.RPRN, kc.RBRC, ks.RCBR,
   kc.ESC, kc.ENT, kc.BSPC, kc.DEL, md.lctl & kc.BSPC,
   fak.CWTG, kc.CAPS_LOCK,
@@ -128,7 +136,7 @@ let make_hrm = fun key_idx =>
   let htb_hrm_right = fun eager => htb_hrm_base eager & {
     key_interrupts = [
       ki.hr, ki.hr, ki.hr, ki.hr, ki.tr, ki.tr, ki.tr, ki.tr,
-             ki.tp, ki.tp, ki.tp, ki.hr, ki.hr, ki.hr,
+             ki.hr, ki.hr, ki.hr, ki.tp, ki.tp, ki.tp,
                     ki.hr, ki.hr, ki.hr, ki.hr,
     ] @ virtual_interrupts
   } in
@@ -138,7 +146,7 @@ let make_hrm = fun key_idx =>
     mdh.rsft, mdh.rgui, mdh.lalt, mdh.rctl,
   ] in
 
-  let hrm_key_indices = [0, 1, 2, 3, 4, 5, 6, 7,] in
+  let hrm_key_indices = [0, 1, 2, 3, 4, 5, 6, 7] in
 
   if std.array.elem key_idx hrm_key_indices then
     let mod_idx = util.array.index_of key_idx hrm_key_indices in
@@ -147,7 +155,7 @@ let make_hrm = fun key_idx =>
 
     mod & hold.reg.behavior (
       (if side == 'left then htb_hrm_left else htb_hrm_right)
-      (if mod == mdh.lgui || mod == mdh.lalt then 'none else 'hold)
+      (if mod == mdh.lgui || mod == mdh.rgui || mod == mdh.lalt || mod == mdh.ralt then 'none else 'hold)
     )
   else
     {}
@@ -196,9 +204,9 @@ in
     ] @ combos_base,
     # NAV
     [
-      sk.lctl,    sk.lalt,      sk.lgui,      sk.lsft,      kc.LEFT,    kc.DOWN,  kc.UP,      kc.RGHT,
-                  kc.HOME,      kc.PGDN,      kc.END,       kc.HOME,    kc.PGUP,  kc.END,
-                                tt & ht,      tt & ht,      sk.ralt,    tt & ht,
+      sk.lctl & ht, sk.lalt & ht, sk.lgui & ht, sk.lsft & ht, kc.LEFT, kc.DOWN, kc.UP,  kc.RGHT,
+                    media.VOLD,   kc.PGDN,      media.VOLU,   kc.HOME, kc.PGUP, kc.END,
+                                  tt & ht,      tt & ht,      sk.ralt, tt & ht,
     ] @ combos_base,
     # SYM
     [

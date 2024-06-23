@@ -5,7 +5,7 @@ let { zilpzalp_usb_pid, .. } = import "lib/example.ncl" in
 {
   mcu = CH552T,
   matrix = {
-    cols = [32, 11, 12, 13],
+    cols = [32, 11, 12, 13, 14],
     rows = [35, 34, 31, 30, 17, 16, 15]
   },
   usb_dev = {
@@ -20,5 +20,6 @@ let { zilpzalp_usb_pid, .. } = import "lib/example.ncl" in
       M 0 2, M 0 1, M 1 1, M 2 1, M 3 1,    M 3 5, M 2 5, M 1 5, M 0 5, M 0 4,
              M 1 2, M 2 2, M 3 2,                  M 3 4, M 2 4, M 1 4,
                            M 1 3, M 3 3,    M 2 3, M 0 3,
+                           M 4 0, M 4 1,
     ]
 }

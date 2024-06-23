@@ -27,7 +27,7 @@ let key_count = physical_key_count + virtual_key_count in
 
 let rec get_side_of_key_idx = fun key_idx =>
   if key_idx < physical_key_count then
-    let right_indices = [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 26, 27] in
+    let right_indices = [5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 23, 24, 25, 28, 29] in
     if std.array.elem key_idx right_indices then 'right else 'left
   else
     let c = std.array.at (key_idx - physical_key_count) combos in
@@ -49,8 +49,8 @@ let make_hrm = fun key_idx =>
   ] in
 
   let hrm_key_indices = [
-    16, 8,  9,  10, 11,
-    12, 13, 14, 15, 23,
+    10, 11, 12, 13, 4,
+    5,  16, 17, 18, 19,
   ] in
 
   let htb_hrm_base = {
@@ -120,7 +120,7 @@ in
 {
   virtual_keys = virtual_keys',
   layers = [layer_default] @ (
-    ["NUM", "NAV", "SYM", "FUN"]
+    ["FUN", "NAV", "SYM", "NUM"]
     |> std.array.map (fun name => layout.layers."%{name}")
     |> std.array.map (fun layer => layer @ virtual_filler)
   )

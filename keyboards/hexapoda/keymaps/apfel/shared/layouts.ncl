@@ -1,4 +1,4 @@
-let { tap, hold, .. } = import "fak/keycode.ncl" in
+let { tap, hold, macro, .. } = import "fak/keycode.ncl" in
 let util = import "fak/util_functions.ncl" in
 
 let kc = tap.reg.kc in
@@ -49,6 +49,22 @@ let shared_layers = {
   ],
 } in
 
+let cu = {
+  # copy custom stuff from example
+  COPY = md.lctl & kc.INS, # md.lctl & kc.C,
+  PSTE = md.lsft & kc.INS, # md.lctl & kc.V,
+  CUT  = md.lctl & kc.X,
+  SCH  = macro.make [
+    macro.tap kc.S,
+    macro.release md.rsft,
+    macro.tap kc.C,
+    macro.tap kc.H,
+  ],
+  SZ = macro.make [ macro.press md.ralt, macro.tap kc.S,    macro.release md.ralt, ],
+  AE = macro.make [ macro.press md.ralt, macro.tap ks.DQUO, macro.release md.ralt, macro.tap kc.A, ],
+  OE = macro.make [ macro.press md.ralt, macro.tap ks.DQUO, macro.release md.ralt, macro.tap kc.O, ],
+  UE = macro.make [ macro.press md.ralt, macro.tap ks.DQUO, macro.release md.ralt, macro.tap kc.U, ],
+} in
 let both_side_combos = [
   [kc.CAPS, 0, 7],
   # Caps word combo here once supported
@@ -115,17 +131,19 @@ let both_side_combos = [
 
   aptmak = {
     base_layout = "VWFPBJLZU'RSTHKXNAIOCGDM,.",
-    thumbs = [kc.QUOT, kc.SPC, kc.E, kc.ENT],
+    thumbs = [kc.ESC, kc.SPC, kc.E, kc.ENT],
     combos = [
       # Left
       [kc.V,    1,  2],  [kc.Q,    2,  3],
-      [ks.LCBR, 0,  8],  [kc.LBRC, 1,  9],  [ks.LPRN, 2,  10], [ks.LABK, 3,  11],
-      [kc.Z,    17, 18], [kc.ESC,  18, 19],
+      [ks.LCBR, 0,  8],  [kc.LBRC, 1,  9],  [ks.LPRN, 2,  10],  [ks.LABK, 3,  11],  [cu.SCH, 11, 13],
+      [kc.B,    12, 3],  [kc.K,    12, 13],
+      [kc.Y,    20, 21],
       # Right
-                                            [tm.lctl & kc.BSPC, 5, 7],
-                                            [kc.BSPC, 5, 6],   [kc.DEL,  6,  7],
+                                            [tm.lctl & kc.BSPC, 6, 8],
+                                            [kc.BSPC, 6, 7],   [kc.DEL,  7,  8],
       [ks.RABK, 4,  12], [ks.RPRN, 5,  13], [kc.RBRC, 6,  14], [ks.RCBR, 7,  15],
-                                            [kc.MINS, 20, 21], [kc.SLSH, 21, 22],
+                                            [kc.J,    6,  17], [kc.X,    16, 17],
+                                            [kc.MINS, 20, 23], [kc.SLSH, 21, 23],
     ] @ both_side_combos,
     layers = {
       NUM = shared_layers.NUM0,

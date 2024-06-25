@@ -3,6 +3,8 @@ let { tap, ..} = import "fak/keycode.ncl" in
 {
   SLSH = tap.reg.ks.AMPR,
   MINS = tap.reg.kc.SLSH,
+  PLUS = tap.reg.kc.RBRC,
+  ACUT = tap.reg.kc.EQL,
   GRV  = tap.reg.ks.PLUS,
   SCLN = tap.reg.ks.LABK,
   LBRC = tap.reg.mod.ralt & tap.reg.kc.N8,

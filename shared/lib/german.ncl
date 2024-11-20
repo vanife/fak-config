@@ -12,6 +12,7 @@ let { tap, ..} = import "fak/keycode.ncl" in
   BSLS = tap.reg.mod.ralt & tap.reg.kc.MINUS,
   EQL  = tap.reg.ks.RPRN,
   QUOT = tap.reg.mod.lsft & tap.reg.kc.NUHS,
+  QUES = tap.reg.mod.lsft & tap.reg.kc.MINS,
   SZ   = tap.reg.kc.MINS,
   AE   = tap.reg.kc.QUOT,
   OE   = tap.reg.kc.SCLN,

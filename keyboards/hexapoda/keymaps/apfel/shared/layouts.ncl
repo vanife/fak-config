@@ -37,14 +37,14 @@ let shared_layers = {
 #                              XXXX,    XXXX,
 #  ],
   NUMDE = [
-   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        de.PLUS, kc.N1,   kc.N2,   kc.N3,   de.SLSH,
+   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        kc.N0,   kc.N1,   kc.N2,   kc.N3,   kc.DOT,
    md.lctl, md.lalt, md.lgui, md.lsft, XXXX,        kc.N0,   kc.N4,   kc.N5,   kc.N6,   kc.DOT,
             XXXX,    XXXX,    XXXX,                          kc.N7,   kc.N8,   kc.N9,
                               XXXX,    XXXX,        kc.E,    kc.N0,
   ],
   SYMDE = [
-   ks.EXLM, de.GRV,  de.LBRC, de.RBRC, de.ACUT,     ks.EXLM, de.QUOT, de.DQUO, de.CIRC, ks.PERC,
-   de.BSLS, XXXX,    de.LPRN, de.RPRN, de.TILD,     de.EQL,  de.PLUS, de.MINS, de.ASTR, de.SLSH,
+   de.ACUT, de.GRV,  de.LBRC, de.RBRC, de.QUES,     ks.EXLM, de.QUOT, de.DQUO, de.CIRC, ks.PERC,
+   de.BSLS, de.HASH, de.LPRN, de.RPRN, de.TILD,     de.EQL,  de.PLUS, de.MINS, de.ASTR, de.SLSH,
             de.TILD, de.LCBR, de.RCBR,                       de.LABK, de.RABK, de.PIPE,
                               de.LCBR, de.RCBR,     XXXX,    XXXX,
   ],

@@ -42,10 +42,15 @@ If you have Nix installed on your system, a Nix flake is provided.
 
 Requirements:
 - [`sdcc` 4.2.0](https://sourceforge.net/projects/sdcc/files)
+ i. _local windows install: `4.5.0` (works on my Windows 11 machine)_
 - [`nickel` 1.5.0](https://github.com/tweag/nickel/releases/tag/1.5.0)
-- [`python` 3.11.6](https://www.python.org/downloads)
-- [`meson` 1.2.3](https://mesonbuild.com/)
-- [`ninja` 1.11.1](https://github.com/ninja-build/ninja/releases/tag/v1.11.1)
+ i. _local windows install: `1.10.1`_
+- [`python` 3.11.6](https://www.python.org/downloads),
+ i. _local windows install: `3.12.3`_
+- [`meson` 1.2.3](https://mesonbuild.com/),
+ i. _local windows install: `1.70`_
+- [`ninja` 1.11.1](https://github.com/ninja-build/ninja/releases/tag/v1.11.1),
+ i. _local windows install: `1.12.1`_
 - [`wchisp`](https://github.com/ch32-rs/wchisp/releases/tag/nightly)
 
 With manual setup, the `fak` command isn't included. Use `python fak.py` in place of `fak` (e.g., `fak clean` becomes `python fak.py clean`). Alternatively, you may make a shell alias for `fak` if you wish.

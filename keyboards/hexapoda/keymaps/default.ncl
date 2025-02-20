@@ -1,11 +1,11 @@
-let { tap, hold, td, combo, encoder, .. } = import "fak/keycode.ncl" in
+let { tap, hold, td, combo, .. } = import "fak/keycode.ncl" in
 let util = import "fak/util_functions.ncl" in
 
 let virtual_keys' = [
-  encoder.cw 0,
-  encoder.ccw 0,
-  encoder.cw 1,
-  encoder.ccw 1,
+    combo.make 50 [20, 21],
+    combo.make 50 [21, 22],
+    combo.make 50 [23, 24],
+    combo.make 50 [24, 25],
 ] in
 
 let key_count = 30 + std.array.length virtual_keys' in

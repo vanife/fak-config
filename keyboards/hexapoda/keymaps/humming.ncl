@@ -11,12 +11,12 @@ let kc = tap.reg.kc in
   ],
   layers = [
     [
-     kc.Q, kc.W, kc.E, kc.R, kc.T, kc.Y, kc.U, kc.I, kc.O, kc.P,
-     kc.A, kc.S, kc.D, kc.F, kc.G, kc.H, kc.J, kc.K, kc.L, kc.QUOT,
-           kc.X, kc.C, kc.V,             kc.M, kc.DOT, kc.COMMA,
-                       kc.SPC, kc.TAB,   kc.ENT, kc.BSPC,
-    # Combos
-              kc.Z, kc.B,                   kc.N, kc.SLASH
+      kc.Q, kc.W, kc.E, kc.R, kc.T, kc.Y, kc.U, kc.I, kc.O, kc.P,
+      kc.A, kc.S, kc.D, kc.F, kc.G, kc.H, kc.J, kc.K, kc.L, kc.QUOT,
+            kc.X, kc.C, kc.V,             kc.M, kc.DOT, kc.COMMA,
+                  kc.SPC, kc.TAB,   kc.ENT, kc.BSPC,
+      # Combos
+      kc.Z,                   kc.B, kc.N,                   kc.SLASH
      ]
    ]
 }

@@ -40,7 +40,10 @@ compile kb="hexapoda" km="humming":
 flash kb="hexapoda" km="humming":
 	python fak.py flash -kb {{kb}} -km {{km}}
 
-xport kb="hexapoda" km="humming" fm="yaml": (compile kb km)
+xport-keymap kb="hexapoda" km="humming" fm="yaml": (compile kb km)
+	nickel export -Isubprojects/fak/ncl -Ishared -Ikeyboards/{{kb}} keyboards/{{kb}}/keymaps/{{km}}.ncl -f {{fm}} -o .fak_cache/{{kb}}.{{km}}.{{fm}}
+
+xport-output kb="hexapoda" km="humming" fm="yaml": (compile kb km)
 	nickel export -Isubprojects/fak/ncl -Ishared -Ikeyboards/{{kb}} .fak_cache/eval.ncl -f {{fm}}
 
 # temp: remove symbolic links used for debugging

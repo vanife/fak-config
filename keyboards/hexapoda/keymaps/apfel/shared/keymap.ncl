@@ -44,8 +44,10 @@ let make_hrm = fun key_idx =>
   let hrm_mods =
     let md = hold.reg.mod
   in [
-    md.lctl, md.lalt, md.lgui, md.lsft, md.ralt,
-    md.ralt, md.rsft, md.rgui, md.lalt, md.rctl,
+    # md.lctl, md.lalt, md.lgui, md.lsft, md.ralt,
+    # md.ralt, md.rsft, md.rgui, md.lalt, md.rctl,
+    md.lgui, md.lalt, md.lctl, md.lsft, md.ralt,
+    md.lalt, md.rsft, md.rctl, md.ralt, md.rgui,
   ] in
 
   let hrm_key_indices = [
@@ -120,8 +122,8 @@ in
 {
   virtual_keys = virtual_keys',
   layers = [layer_default] @ (
-    ["FUN", "NAV", "SYM", "NUM"]
+    ["NAV", "FUN", "SYM", "NUM"]
     |> std.array.map (fun name => layout.layers."%{name}")
-    |> std.array.map (fun layer => layer @ virtual_filler)
+    # |> std.array.map (fun layer => layer @ virtual_filler)    # disable if combos are also on the other layers
   )
 }

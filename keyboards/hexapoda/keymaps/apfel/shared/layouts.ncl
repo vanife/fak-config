@@ -9,7 +9,49 @@ let tm = tap.reg.mod in
 let me = tap.custom.media in
 let XXXX = tap.none & hold.none in
 
+let sh = {
+  CUT = kc.X & tm.lctl,
+  COP = kc.C & tm.lctl,
+  PST = kc.V & tm.lctl,
+  UND = kc.Z & tm.lctl,
+  RED = kc.Y & tm.lctl,
+} in
+
 let shared_layers = {
+  M_NAV = [
+   XXXX,    XXXX,     XXXX,     XXXX,     XXXX,     kc.PGUP,  kc.HOME,  kc.UP,    kc.END,   kc.PGUP,
+   md.lgui, md.lalt,  md.lctl,  md.lsft,  XXXX,     kc.PGDN,  kc.LEFT,  kc.DOWN,  kc.RGHT,  kc.PGDN,
+            sh.CUT,   sh.COP,   sh.PST,                         me.VOLD,  me.MUTE,  me.VOLU,
+                                XXXX,     XXXX,     XXXX,     XXXX,   # thumb
+                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: base
+                                    XXXX,                 XXXX,       # combo: thumb
+  ],
+  M_FUN = [
+   XXXX,    XXXX,     XXXX,     XXXX,     XXXX,     kc.F12,   kc.F7,    kc.F8,    kc.F9,    kc.F10,
+   md.lgui, md.lalt,  md.lctl,  md.lsft,  XXXX,     kc.F11,   kc.F4,    kc.F5,    kc.F6,    kc.F10,
+            XXXX,     XXXX,     XXXX,                         kc.F1,    kc.F2,    kc.F3,
+                                XXXX,     XXXX,     XXXX,     XXXX,   # thumb
+                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: base
+                                      XXXX,               XXXX,       # combo: thumb
+  ],
+  M_SYM = [
+   ks.EXLM, kc.GRV,  ks.DQUO, kc.DOT,  kc.LBRC,     kc.RBRC, kc.BSLS, ks.PIPE, kc.SLSH,  kc.TAB,
+   ks.EXLM, ks.AT,   ks.HASH, ks.DLR,  ks.LPRN,     ks.RPRN, ks.AMPR, ks.ASTR, ks.PERC,  kc.TAB,
+            ks.TILD, kc.QUOT, ks.UNDS,                       kc.MINS, ks.PLUS, kc.EQL,
+                              ks.LCBR, ks.RCBR,     XXXX,     XXXX,   # thumb
+                              XXXX,    XXXX,        XXXX,     XXXX,   # combo: base
+                                    XXXX,                 XXXX,       # combo: thumb
+  ],
+  M_NUM = [
+    # top left has EXTRA LETTERS:: russian: Х Ж Ё Ъ, german:  Ü Ö; TODO: shifted version are difficult though
+    kc.LBRC,  kc.SCLN,  kc.GRV,   kc.RBRC,  XXXX,   ks.PLUS,  kc.N7,  kc.N8,  kc.N9,  kc.N0,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXX,   ks.ASTR,  kc.N4,  kc.N5,  kc.N6,  kc.EQL,
+              XXXX,     XXXX,     XXXX,                       kc.N1,  kc.N2,  kc.N3,
+                              XXXX,    XXXX,        XXXX,     XXXX,   # thumb
+                              XXXX,    XXXX,        kc.N0,    kc.SPC, # combo: base
+                                    XXXX,                 XXXX,       # combo: thumb
+  ],
+
   NUM0 = [
    XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        ks.PLUS, kc.N1,   kc.N2,   kc.N3,   kc.SLSH,
    md.lctl, md.lalt, md.lgui, md.lsft, XXXX,        kc.N0,   kc.N4,   kc.N5,   kc.N6,   kc.DOT,
@@ -22,20 +64,6 @@ let shared_layers = {
              XXXX,    kc.DOWN, XXXX,                           kc.PGDN, kc.PGUP,  kc.END,
                                XXXX,    XXXX,        XXXX,    XXXX,
   ],
-#  NUM1 = [
-#            kc.N9,   kc.N8,   kc.N7,   ks.ASTR,     ks.PLUS, kc.N7,   kc.N8,   kc.N9,
-#            kc.N6,   kc.N5,   kc.N4,   kc.SLSH,     kc.MINS, kc.N4,   kc.N5,   kc.N6,
-#   kc.N0,   kc.N3,   kc.N2,   kc.N1,                         kc.N1,   kc.N2,   kc.N3,   kc.DOT,
-#                              XXXX,    XXXX,        kc.E,    kc.N0,
-#                              XXXX,    XXXX,
-#  ],
-#  NAV1 = [
-#            kc.INS,  kc.UP,   kc.BSPC, me.VOLD,     me.VOLU, kc.BSPC, kc.DEL,  kc.INS,
-#            kc.LEFT, kc.DOWN, kc.RGHT, me.MUTE,     kc.LEFT, kc.DOWN, kc.UP,   kc.RGHT,
-#   md.lctl, kc.HOME, kc.PGDN, kc.END,                        kc.HOME, kc.PGUP, kc.END,  kc.TAB,
-#                              XXXX,    XXXX,        XXXX,    XXXX,
-#                              XXXX,    XXXX,
-#  ],
   NUMDE = [
    XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        kc.N0,   kc.N1,   kc.N2,   kc.N3,   kc.DOT,
    md.lctl, md.lalt, md.lgui, md.lsft, XXXX,        kc.N0,   kc.N4,   kc.N5,   kc.N6,   kc.DOT,
@@ -92,6 +120,25 @@ let thumb_combos = [
 ] in
 
 {
+  miryoku = {
+    base_layout = "QWERTYUIOPASDFGHJKL'XCVM,.",
+    thumbs = [kc.SPC, kc.TAB, kc.ENT, kc.BSPC],
+    combos = [
+      # Left
+      [kc.Z,    20, 21],  [kc.B,    21, 22],
+      # Right
+      [kc.N,    23, 24],  [kc.SLSH, 24, 25],
+      # Thumbs
+      [kc.ESC,  26, 27],  [kc.DEL,  28, 29],
+    ],
+    layers = {
+      NUM = shared_layers.M_NUM,
+      NAV = shared_layers.M_NAV,
+      SYM = shared_layers.M_SYM,
+      FUN = shared_layers.M_FUN,
+    }
+  },
+
   qwerty = {
     base_layout = "WERTYUIOSDFGHJKLAXCVM,.P..",
     thumbs = [kc.ESC, kc.SPC, kc.N, kc.ENT],
@@ -172,6 +219,7 @@ let thumb_combos = [
       FUN = shared_layers.FUN,
     },
   },
+
   aptmak_de = {
     base_layout = "VWFPBJLZU'RSTHKXNAIOCGDM,.",
     thumbs = [kc.ESC, kc.SPC, kc.E, kc.TAB],

@@ -29,7 +29,7 @@ let kc = tap.reg.kc in
             kc.X, kc.C, kc.V,             kc.M, kc.DOT, kc.COMMA,
                   kc.SPC, kc.TAB,   kc.ENT, kc.BSPC,
       # Combos
-      kc.Z,                   kc.B, kc.N,                   kc.SLASH
+      kc.Z,                   kc.B, kc.N,                   kc.SLASH,
      ]
    ]
 }

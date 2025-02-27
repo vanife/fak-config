@@ -23,7 +23,8 @@ let shared_layers = {
    md.lgui, md.lalt,  md.lctl,  md.lsft,  XXXX,     kc.PGDN,  kc.LEFT,  kc.DOWN,  kc.RGHT,  kc.PGDN,
             sh.CUT,   sh.COP,   sh.PST,                         me.VOLD,  me.MUTE,  me.VOLU,
                                 XXXX,     XXXX,     XXXX,     XXXX,   # thumb
-                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: base
+        kc.ESC,                                                                         kc.DEL, # combo: row1
+                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: row3
                                     XXXX,                 XXXX,       # combo: thumb
   ],
   M_FUN = [
@@ -31,7 +32,8 @@ let shared_layers = {
    md.lgui, md.lalt,  md.lctl,  md.lsft,  XXXX,     kc.F11,   kc.F4,    kc.F5,    kc.F6,    kc.F10,
             XXXX,     XXXX,     XXXX,                         kc.F1,    kc.F2,    kc.F3,
                                 XXXX,     XXXX,     XXXX,     XXXX,   # thumb
-                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: base
+        kc.ESC,                                                                         kc.DEL, # combo: row1
+                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: row3
                                       XXXX,               XXXX,       # combo: thumb
   ],
   M_SYM = [
@@ -39,7 +41,8 @@ let shared_layers = {
    ks.EXLM, ks.AT,   ks.HASH, ks.DLR,  ks.LPRN,     ks.RPRN, ks.AMPR, ks.ASTR, ks.PERC,  kc.TAB,
             ks.TILD, kc.QUOT, ks.UNDS,                       kc.MINS, ks.PLUS, kc.EQL,
                               ks.LCBR, ks.RCBR,     XXXX,     XXXX,   # thumb
-                              XXXX,    XXXX,        XXXX,     XXXX,   # combo: base
+        kc.ESC,                                                                         kc.DEL, # combo: row1
+                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: row3
                                     XXXX,                 XXXX,       # combo: thumb
   ],
   M_NUM = [
@@ -48,7 +51,8 @@ let shared_layers = {
     md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXX,   ks.ASTR,  kc.N4,  kc.N5,  kc.N6,  kc.EQL,
               XXXX,     XXXX,     XXXX,                       kc.N1,  kc.N2,  kc.N3,
                               XXXX,    XXXX,        XXXX,     XXXX,   # thumb
-                              XXXX,    XXXX,        kc.N0,    kc.SPC, # combo: base
+        kc.ESC,                                                                         kc.DEL, # combo: row1
+                              XXXX,     XXXX,       kc.N0,    kc.SPC, # combo: row3
                                     XXXX,                 XXXX,       # combo: thumb
   ],
 
@@ -125,6 +129,7 @@ let thumb_combos = [
     thumbs = [kc.SPC, kc.TAB, kc.ENT, kc.BSPC],
     combos = [
       # Left
+      [kc.ESC,  0,  1],   [kc.DEL,  8,  9],
       [kc.Z,    20, 21],  [kc.B,    21, 22],
       # Right
       [kc.N,    23, 24],  [kc.SLSH, 24, 25],

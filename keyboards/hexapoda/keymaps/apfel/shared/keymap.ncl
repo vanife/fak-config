@@ -122,7 +122,7 @@ in
 {
   virtual_keys = virtual_keys',
   layers = [layer_default] @ (
-    ["NAV", "FUN", "SYM", "NUM"]
+    ["NAV", "FUN", "SYM", "NUM", "MOU"]
     |> std.array.map (fun name => layout.layers."%{name}")
     # |> std.array.map (fun layer => layer @ virtual_filler)    # disable if combos are also on the other layers
   )

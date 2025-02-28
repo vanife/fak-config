@@ -7,7 +7,8 @@ let ks = tap.reg.ks in
 let md = hold.reg.mod in
 let tm = tap.reg.mod in
 let me = tap.custom.media in
-let XXXX = tap.none & hold.none in
+let mo = tap.custom.mouse in
+let XXXXXXX = tap.none & hold.none in
 
 let sh = {
   CUT = kc.X & tm.lctl,
@@ -17,80 +18,91 @@ let sh = {
   RED = kc.Y & tm.lctl,
 } in
 
+let TOLA_MO = hold.reg.layer 5 in
+
 let shared_layers = {
   M_NAV = [
-   XXXX,    XXXX,     XXXX,     XXXX,     XXXX,     kc.PGUP,  kc.HOME,  kc.UP,    kc.END,   kc.PGUP,
-   md.lgui, md.lalt,  md.lctl,  md.lsft,  XXXX,     kc.PGDN,  kc.LEFT,  kc.DOWN,  kc.RGHT,  kc.PGDN,
-            sh.CUT,   sh.COP,   sh.PST,                         me.VOLD,  me.MUTE,  me.VOLU,
-                                XXXX,     XXXX,     XXXX,     XXXX,   # thumb
-        kc.ESC,                                                                         kc.DEL, # combo: row1
-                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: row3
-                                    XXXX,                 XXXX,       # combo: thumb
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  kc.PGUP,  kc.HOME,  kc.UP,    kc.END,   kc.PGUP,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.PGDN,  kc.LEFT,  kc.DOWN,  kc.RGHT,  kc.PGDN,
+              sh.CUT,   sh.COP,   sh.PST,                       me.VOLD,  me.MUTE,  me.VOLU,
+                                  XXXXXXX,  XXXXXXX,  XXXXXXX,  TOLA_MO,                # thumb
+                  kc.ESC,                                                       kc.DEL, # combo: row1
+                  XXXXXXX,  XXXXXXX,                                XXXXXXX,  XXXXXXX,  # combo: row3
+                                    XXXXXXX,              XXXXXXX,                      # combo: thumb
   ],
   M_FUN = [
-   XXXX,    XXXX,     XXXX,     XXXX,     XXXX,     kc.F12,   kc.F7,    kc.F8,    kc.F9,    kc.F10,
-   md.lgui, md.lalt,  md.lctl,  md.lsft,  XXXX,     kc.F11,   kc.F4,    kc.F5,    kc.F6,    kc.F10,
-            XXXX,     XXXX,     XXXX,                         kc.F1,    kc.F2,    kc.F3,
-                                XXXX,     XXXX,     XXXX,     XXXX,   # thumb
-        kc.ESC,                                                                         kc.DEL, # combo: row1
-                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: row3
-                                      XXXX,               XXXX,       # combo: thumb
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  kc.F12,   kc.F7,    kc.F8,    kc.F9,    kc.F10,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.F11,   kc.F4,    kc.F5,    kc.F6,    kc.F10,
+              XXXXXXX,  XXXXXXX,  XXXXXXX,                      kc.F1,    kc.F2,    kc.F3,
+                                  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                # thumb
+                  kc.ESC,                                                       kc.DEL, # combo: row1
+                  XXXXXXX,  XXXXXXX,                                XXXXXXX,  XXXXXXX,  # combo: row3
+                                    XXXXXXX,              XXXXXXX,                      # combo: thumb
   ],
   M_SYM = [
-   ks.EXLM, kc.GRV,  ks.DQUO, kc.DOT,  kc.LBRC,     kc.RBRC, kc.BSLS, ks.PIPE, kc.SLSH,  kc.TAB,
-   ks.EXLM, ks.AT,   ks.HASH, ks.DLR,  ks.LPRN,     ks.RPRN, ks.AMPR, ks.ASTR, ks.PERC,  kc.TAB,
-            ks.TILD, kc.QUOT, ks.UNDS,                       kc.MINS, ks.PLUS, kc.EQL,
-                              ks.LCBR, ks.RCBR,     XXXX,     XXXX,   # thumb
-        kc.ESC,                                                                         kc.DEL, # combo: row1
-                                XXXX,     XXXX,     XXXX,     XXXX,   # combo: row3
-                                    XXXX,                 XXXX,       # combo: thumb
+    ks.PIPE,  ks.LCBR,  XXXXXXX,  ks.RCBR,  ks.QUES,  ks.TILD,  ks.AMPR, ks.ASTR, ks.LPRN,  ks.RPRN,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  ks.UNDS,  ks.DLR,  ks.PERC, ks.CIRC,  ks.PLUS,
+              ks.LABK,  ks.COLN,  ks.RABK,                      ks.EXLM, ks.AT,   ks.HASH,
+                                  ks.LCBR,  ks.RCBR,  XXXXXXX,  XXXXXXX,                # thumb
+                  kc.ESC,                                                       kc.DEL, # combo: row1
+                  XXXXXXX,  XXXXXXX,                                XXXXXXX,  XXXXXXX,  # combo: row3
+                                    XXXXXXX,              XXXXXXX,                      # combo: thumb
   ],
   M_NUM = [
     # top left has EXTRA LETTERS:: russian: Х Ж Ё Ъ, german:  Ü Ö; TODO: shifted version are difficult though
-    kc.LBRC,  kc.SCLN,  kc.GRV,   kc.RBRC,  XXXX,   ks.PLUS,  kc.N7,  kc.N8,  kc.N9,  kc.N0,
-    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXX,   ks.ASTR,  kc.N4,  kc.N5,  kc.N6,  kc.EQL,
-              XXXX,     XXXX,     XXXX,                       kc.N1,  kc.N2,  kc.N3,
-                              XXXX,    XXXX,        XXXX,     XXXX,   # thumb
-        kc.ESC,                                                                         kc.DEL, # combo: row1
-                              XXXX,     XXXX,       kc.N0,    kc.SPC, # combo: row3
-                                    XXXX,                 XXXX,       # combo: thumb
+    kc.BSLS,  kc.LBRC,  XXXXXXX,  kc.RBRC,  kc.SLSH,  kc.GRV,   kc.N7,  kc.N8,  kc.N9,  kc.N0,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.MINS,  kc.N4,  kc.N5,  kc.N6,  kc.EQL,
+              kc.COMM,  kc.SCLN,  kc.DOT,                       kc.N1,  kc.N2,  kc.N3,
+                                  kc.LBRC,  kc.RBRC,  XXXXXXX,  XXXXXXX,                # thumb
+                  kc.ESC,                                                       kc.DEL, # combo: row1
+                  XXXXXXX,  XXXXXXX,                                 XXXXXXX,   kc.SPC, # combo: row3
+                                    XXXXXXX,              XXXXXXX,                      # combo: thumb
+  ],
+  M_MOU = [
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  mo.WH_U,  kc.HOME,  mo.UP,    kc.END,   mo.BTN2,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  mo.WH_D,  mo.LEFT,  mo.DOWN,  mo.RGHT,  mo.BTN1,
+              sh.CUT,   sh.COP,   sh.PST,                       me.VOLD,  me.MUTE,  me.VOLU,
+                                  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                # thumb
+                  kc.ESC,                                                       kc.DEL, # combo: row1
+                  XXXXXXX,  XXXXXXX,                                 XXXXXXX,  XXXXXXX,# combo: row3
+                                    XXXXXXX,              XXXXXXX,                      # combo: thumb
   ],
 
   NUM0 = [
-   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        ks.PLUS, kc.N1,   kc.N2,   kc.N3,   kc.SLSH,
-   md.lctl, md.lalt, md.lgui, md.lsft, XXXX,        kc.N0,   kc.N4,   kc.N5,   kc.N6,   kc.DOT,
-            XXXX,    XXXX,    XXXX,                          kc.N7,   kc.N8,   kc.N9,
-                              XXXX,    XXXX,        kc.E,    kc.N0,
+   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     ks.PLUS, kc.N1,   kc.N2,   kc.N3,   kc.SLSH,
+   md.lctl, md.lalt, md.lgui, md.lsft, XXXXXXX,     kc.N0,   kc.N4,   kc.N5,   kc.N6,   kc.DOT,
+            XXXXXXX, XXXXXXX, XXXXXXX,                       kc.N7,   kc.N8,   kc.N9,
+                              XXXXXXX, XXXXXXX,     kc.E,    kc.N0,
   ],
   NAV0 = [
-   XXXX,     XXXX,    kc.UP,   me.VOLU,  me.VOLD,     kc.LEFT, kc.PGDN, kc.PGUP,  kc.END,   kc.TAB,
+   XXXXXXX,  XXXXXXX, kc.UP,   me.VOLU,  me.VOLD,     kc.LEFT, kc.PGDN, kc.PGUP,  kc.END,   kc.TAB,
    md.lctl,  kc.LEFT, kc.UP,   kc.RIGHT, me.MUTE,     kc.HOME, kc.DOWN, kc.UP,    kc.RGHT,  kc.TAB,
-             XXXX,    kc.DOWN, XXXX,                           kc.PGDN, kc.PGUP,  kc.END,
-                               XXXX,    XXXX,        XXXX,    XXXX,
+             XXXXXXX, kc.DOWN, XXXXXXX,                        kc.PGDN, kc.PGUP,  kc.END,
+                               XXXXXXX,  XXXXXXX,     XXXXXXX, XXXXXXX,
   ],
   NUMDE = [
-   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        kc.N0,   kc.N1,   kc.N2,   kc.N3,   kc.DOT,
-   md.lctl, md.lalt, md.lgui, md.lsft, XXXX,        kc.N0,   kc.N4,   kc.N5,   kc.N6,   kc.DOT,
-            XXXX,    XXXX,    XXXX,                          kc.N7,   kc.N8,   kc.N9,
-                              XXXX,    XXXX,        kc.E,    kc.N0,
+   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     kc.N0,   kc.N1,   kc.N2,   kc.N3,   kc.DOT,
+   md.lctl, md.lalt, md.lgui, md.lsft, XXXXXXX,     kc.N0,   kc.N4,   kc.N5,   kc.N6,   kc.DOT,
+            XXXXXXX, XXXXXXX, XXXXXXX,                       kc.N7,   kc.N8,   kc.N9,
+                              XXXXXXX, XXXXXXX,     kc.E,    kc.N0,
   ],
   SYMDE = [
    de.ACUT, de.GRV,  de.LBRC, de.RBRC, de.QUES,     ks.EXLM, de.QUOT, de.DQUO, de.CIRC, ks.PERC,
    de.BSLS, de.HASH, de.LPRN, de.RPRN, de.TILD,     de.EQL,  de.PLUS, de.MINS, de.ASTR, de.SLSH,
             de.TILD, de.LCBR, de.RCBR,                       de.LABK, de.RABK, de.PIPE,
-                              de.LCBR, de.RCBR,     XXXX,    XXXX,
+                              de.LCBR, de.RCBR,     XXXXXXX, XXXXXXX,
   ],
   SYM = [
    ks.EXLM, kc.GRV,  ks.DQUO, kc.DOT,  kc.LBRC,     kc.RBRC, kc.BSLS, ks.PIPE, kc.SLSH,  kc.TAB,
    ks.EXLM, ks.AT,   ks.HASH, ks.DLR,  ks.LPRN,     ks.RPRN, ks.AMPR, ks.ASTR, ks.PERC,  kc.TAB,
             ks.TILD, kc.QUOT, ks.UNDS,                       kc.MINS, ks.PLUS, kc.EQL,
-                              ks.LCBR, ks.RCBR,     XXXX,    XXXX,
+                              ks.LCBR, ks.RCBR,     XXXXXXX, XXXXXXX,
   ],
   FUN = [
-   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        kc.F12,  kc.F7,   kc.F8,   kc.F9,   kc.F10,
-   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,        kc.F11,  kc.F4,   kc.F5,   kc.F6,   kc.F10,
-            XXXX,    XXXX,    XXXX,                          kc.F1,   kc.F2,   kc.F3,
-                              XXXX,    XXXX,        XXXX,    XXXX,
+   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     kc.F12,  kc.F7,   kc.F8,   kc.F9,   kc.F10,
+   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     kc.F11,  kc.F4,   kc.F5,   kc.F6,   kc.F10,
+            XXXXXXX, XXXXXXX, XXXXXXX,                       kc.F1,   kc.F2,   kc.F3,
+                              XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX,
   ],
 } in
 
@@ -129,7 +141,7 @@ let thumb_combos = [
     thumbs = [kc.SPC, kc.TAB, kc.ENT, kc.BSPC],
     combos = [
       # Left
-      [kc.ESC,  0,  1],   [kc.DEL,  8,  9],
+      [kc.ESC,  1,  2],   [kc.DEL,  7,  8],
       [kc.Z,    20, 21],  [kc.B,    21, 22],
       # Right
       [kc.N,    23, 24],  [kc.SLSH, 24, 25],
@@ -141,6 +153,7 @@ let thumb_combos = [
       NAV = shared_layers.M_NAV,
       SYM = shared_layers.M_SYM,
       FUN = shared_layers.M_FUN,
+      MOU = shared_layers.M_MOU,
     }
   },
 

@@ -46,13 +46,13 @@ let make_hrm = fun key_idx =>
   in [
     # md.lctl, md.lalt, md.lgui, md.lsft, md.ralt,
     # md.ralt, md.rsft, md.rgui, md.lalt, md.rctl,
-    md.lgui, md.lalt, md.lctl, md.lsft, md.ralt,
-    md.lalt, md.rsft, md.rctl, md.ralt, md.rgui,
+    md.lgui, md.lalt, md.lctl, md.lsft,
+    md.rsft, md.rctl, md.ralt, md.rgui,
   ] in
 
   let hrm_key_indices = [
-    10, 11, 12, 13, 4,
-    5,  16, 17, 18, 19,
+    10, 11, 12, 13,
+    16, 17, 18, 19,
   ] in
 
   let htb_hrm_base = {

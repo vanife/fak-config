@@ -22,9 +22,9 @@ let TOLA_MO = hold.reg.layer 5 in
 
 let shared_layers = {
   M_NAV = [
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  kc.PGUP,  kc.HOME,  kc.UP,    kc.END,   kc.PGUP,
-    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.PGDN,  kc.LEFT,  kc.DOWN,  kc.RGHT,  kc.PGDN,
-              sh.CUT,   sh.COP,   sh.PST,                       me.VOLD,  me.MUTE,  me.VOLU,
+    XXXXXXX,  me.VOLD,  me.MUTE,  me.VOLU,  XXXXXXX,  kc.PGUP,  kc.HOME,  kc.UP,    kc.END,   kc.PGUP,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.PGDN,  kc.LEFT,  kc.UP  ,  kc.RGHT,  kc.PGDN,
+              sh.CUT,   sh.COP,   sh.PST,                       XXXXXXX,  kc.DOWN,  XXXXXXX,
                                   XXXXXXX,  XXXXXXX,  XXXXXXX,  TOLA_MO,                # thumb
                   kc.ESC,                                                       kc.DEL, # combo: row1
                   XXXXXXX,  XXXXXXX,                                XXXXXXX,  XXXXXXX,  # combo: row3
@@ -53,19 +53,19 @@ let shared_layers = {
     kc.BSLS,  kc.LBRC,  XXXXXXX,  kc.RBRC,  kc.SLSH,  kc.GRV,   kc.N7,  kc.N8,  kc.N9,  kc.N0,
     md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.MINS,  kc.N4,  kc.N5,  kc.N6,  kc.EQL,
               kc.COMM,  kc.SCLN,  kc.DOT,                       kc.N1,  kc.N2,  kc.N3,
-                                  kc.LBRC,  kc.RBRC,  XXXXXXX,  XXXXXXX,                # thumb
+                                  TOLA_MO,  XXXXXXX,  XXXXXXX,  XXXXXXX,                # thumb
                   kc.ESC,                                                       kc.DEL, # combo: row1
                   XXXXXXX,  XXXXXXX,                                 XXXXXXX,   kc.SPC, # combo: row3
                                     XXXXXXX,              XXXXXXX,                      # combo: thumb
   ],
   M_MOU = [
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  mo.WH_U,  kc.HOME,  mo.UP,    kc.END,   mo.BTN2,
-    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  mo.WH_D,  mo.LEFT,  mo.DOWN,  mo.RGHT,  mo.BTN1,
-              sh.CUT,   sh.COP,   sh.PST,                       me.VOLD,  me.MUTE,  me.VOLU,
-                                  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                # thumb
-                  kc.ESC,                                                       kc.DEL, # combo: row1
-                  XXXXXXX,  XXXXXXX,                                 XXXXXXX,  XXXXXXX,# combo: row3
-                                    XXXXXXX,              XXXXXXX,                      # combo: thumb
+    XXXXXXX,  me.VOLD,  me.MUTE,  me.VOLU,  XXXXXXX,  mo.WH_U,  kc.HOME,  mo.UP,    kc.END,   mo.BTN2,
+    md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  mo.WH_D,  mo.LEFT,  mo.UP,    mo.RGHT,  mo.BTN1,
+              sh.CUT,   sh.COP,   sh.PST,                       XXXXXXX,  mo.DOWN,  XXXXXXX,
+                                  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                 # thumb
+                  kc.ESC,                                                       kc.DEL,  # combo: row1
+                  XXXXXXX,  XXXXXXX,                                 XXXXXXX,   XXXXXXX, # combo: row3
+                                    XXXXXXX,              XXXXXXX,                       # combo: thumb
   ],
 
   NUM0 = [

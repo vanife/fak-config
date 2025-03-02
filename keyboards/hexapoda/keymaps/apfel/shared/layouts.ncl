@@ -10,28 +10,42 @@ let me = tap.custom.media in
 let mo = tap.custom.mouse in
 let XXXXXXX = tap.none & hold.none in
 
+let me_lctl = {
+  data = {
+    tap = {
+      data = { mods = { left_ctrl = true, }, },
+      type = 'custom,
+    },
+  },
+  type = 'hold_tap,
+} in
+
 let sh = {
   CUT = kc.X & tm.lctl,
   COP = kc.C & tm.lctl,
   PST = kc.V & tm.lctl,
-  UND = kc.Z & tm.lctl,
-  RED = kc.Y & tm.lctl,
+  UNDO = kc.Z & tm.lctl,
+  REDO = kc.Y & tm.lctl,
+  CTLB = kc.B & tm.lctl,
+  # requires `mods | Modifiers | default = {}` added to `keymap.nlc:126`, and still does not work.
+  BRUP = me.VOLU & me_lctl,
+  BRDN = me.VOLD & me_lctl,
 } in
 
 let TOLA_MO = hold.reg.layer 5 in
 
 let shared_layers = {
   M_NAV = [
-    XXXXXXX,  me.VOLD,  me.MUTE,  me.VOLU,  XXXXXXX,  kc.PGUP,  kc.HOME,  kc.UP,    kc.END,   kc.PGUP,
+    sh.BRDN,  me.VOLD,  me.MUTE,  me.VOLU,  sh.BRUP,  kc.PGUP,  kc.HOME,  kc.UP,    kc.END,   kc.PGUP,
     md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.PGDN,  kc.LEFT,  kc.UP  ,  kc.RGHT,  kc.PGDN,
               sh.CUT,   sh.COP,   sh.PST,                       XXXXXXX,  kc.DOWN,  XXXXXXX,
                                   XXXXXXX,  XXXXXXX,  XXXXXXX,  TOLA_MO,                # thumb
                   kc.ESC,                                                       kc.DEL, # combo: row1
-                  XXXXXXX,  XXXXXXX,                                XXXXXXX,  XXXXXXX,  # combo: row3
+                  sh.UNDO,  sh.REDO,                                XXXXXXX,  XXXXXXX,  # combo: row3
                                     XXXXXXX,              XXXXXXX,                      # combo: thumb
   ],
   M_FUN = [
-    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  kc.F12,   kc.F7,    kc.F8,    kc.F9,    kc.F10,
+    sh.BRDN,  me.VOLD,  me.MUTE,  me.VOLU,  sh.BRUP,  kc.F12,   kc.F7,    kc.F8,    kc.F9,    kc.F10,
     md.lgui,  md.lalt,  md.lctl,  md.lsft,  XXXXXXX,  kc.F11,   kc.F4,    kc.F5,    kc.F6,    kc.F10,
               XXXXXXX,  XXXXXXX,  XXXXXXX,                      kc.F1,    kc.F2,    kc.F3,
                                   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                # thumb

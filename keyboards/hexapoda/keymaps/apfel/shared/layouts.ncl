@@ -10,16 +10,6 @@ let me = tap.custom.media in
 let mo = tap.custom.mouse in
 let XXXXXXX = tap.none & hold.none in
 
-let me_lctl = {
-  data = {
-    tap = {
-      data = { mods = { left_ctrl = true, }, },
-      type = 'custom,
-    },
-  },
-  type = 'hold_tap,
-} in
-
 let sh = {
   CUT = kc.X & tm.lctl,
   COP = kc.C & tm.lctl,
@@ -27,9 +17,16 @@ let sh = {
   UNDO = kc.Z & tm.lctl,
   REDO = kc.Y & tm.lctl,
   CTLB = kc.B & tm.lctl,
-  # requires `mods | Modifiers | default = {}` added to `keymap.nlc:126`, and still does not work.
-  BRUP = me.VOLU & me_lctl,
-  BRDN = me.VOLD & me_lctl,
+  BRUP = macro.make [
+    macro.press md.lctl,
+    macro.tap me.VOLU,
+    macro.release md.lctl,
+  ],
+  BRDN = macro.make [
+    macro.press md.lctl,
+    macro.tap me.VOLD,
+    macro.release md.lctl,
+  ],
 } in
 
 let TOLA_MO = hold.reg.layer 5 in

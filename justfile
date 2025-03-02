@@ -10,7 +10,6 @@ default:
 [doc('List of tasks to consider so far:
  [ ] configure timeout for CapWord (subprojects\fak\src\caps_word.c:32)
  [ ] configure range of symbols for CapWord, not just US layout (subprojects\fak\src\caps_word.c:caps_word_handle_key())
- [ ] make `ctrl+VOLU` work to control laptop screen brightness.
 ')]
 end:
 	@echo done?

@@ -121,6 +121,7 @@ in
 
 {
   virtual_keys = virtual_keys',
+  # conditional_layers = {"5" = [1, 4],}, # does not work for some reason, so defined simply inline
   layers = [layer_default] @ (
     ["NAV", "FUN", "SYM", "NUM", "MOU"]
     |> std.array.map (fun name => layout.layers."%{name}")

@@ -10,6 +10,13 @@ default:
 [doc('List of tasks to consider so far:
  [ ] configure timeout for CapWord (subprojects\fak\src\caps_word.c:32)
  [ ] configure range of symbols for CapWord, not just US layout (subprojects\fak\src\caps_word.c:caps_word_handle_key())
+ [ ] (so_scripts) has notebook to generate a https://keymap-drawer.streamlit.app/?example_yaml=hummingbird.yaml view, for which:
+  - [ ] expand SHIFTed keys
+  - [ ] highlight the pressed key for layers
+  - [ ] create versions of keys using different languages including EN, DE, RU, UA
+  - [ ] create highlights for various combinations (zoom in/out, launch apps, switch apps etc); copy many ideas from UHK and Ben Vallack
+  - [ ] 
+
 ')]
 end:
 	@echo done?
